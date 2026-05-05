@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Haven</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.css" />
+  <script src="dist/js/bootstrap.js"></script>
+
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f7f3ee;
+  color: #222;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #8b5cf6;
+}
+
+.navbar nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.btn, .search-box button {
+  background: #8b5cf6;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1524578271613-d550eacf6090?auto=format&fit=crop&w=1600&q=80') center/cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.search-box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 10px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.categories, .featured, .newsletter {
+  padding: 60px;
+  text-align: center;
+}
+
+.category-grid, .book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.category-card, .book-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.category-card {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.book-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.book-card h3 {
+  margin-bottom: 6px;
+}
+
+.newsletter {
+  background: #ede9fe;
+}
+
+.footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+</style>
+
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Book<span>Haven</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="bestsellers.html">Bestsellers</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+   
+
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f8f5f0;
+  color: #222;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #8b5cf6;
+}
+
+.header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.header nav a.active {
+  color: #8b5cf6;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 40px 10px;
+}
+
+.filter {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter.active,
+.filter:hover {
+  background: #8b5cf6;
+  color: white;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 40px 60px 70px;
+}
+
+.category-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #8b5cf6;
+}
+
+.category-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+}
+    </style>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Discover Your Next Favorite Book</h1>
+      <p>Explore bestselling novels, timeless classics, and hidden gems all in one place.</p>
+      <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search for books, authors, or genres..." />
+            <button id="searchBtn">Search</button>
+        </div>
+    </div>
+  </section>
+
+  <section class="categories">
+    <h2>Browse Categories</h2>
+    <div class="category-grid">
+      <div class="category-card">Fiction</div>
+      <div class="category-card">Non-Fiction</div>
+      <div class="category-card">Romance</div>
+      <div class="category-card">Children</div>
+      <div class="category-card">Mystery</div>
+      <div class="category-card">Fantasy</div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <h2>Featured Books</h2>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="https://via.placeholder.com/180x250" alt="Book cover" />
+        <h3>The Great Story</h3>
+        <p>Author Name</p>
+      </div>
+      <div class="book-card">
+        <img src="https://via.placeholder.com/180x250" alt="Book cover" />
+        <h3>Midnight Pages</h3>
+        <p>Author Name</p>
+      </div>
+      <div class="book-card">
+        <img src="https://via.placeholder.com/180x250" alt="Book cover" />
+        <h3>Dream Library</h3>
+        <p>Author Name</p>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <footer class="footer">
+    <p>&copy; 2026 BookHaven. All rights reserved.</p>
+  </footer>
+</body>
+</html>

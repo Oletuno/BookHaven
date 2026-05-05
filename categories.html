@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Categories</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.css">
+    <script src="dist/js/bootstrap.js"></script>
+ <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f8f5f0;
+  color: #222;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #8b5cf6;
+}
+
+.header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.header nav a.active {
+  color: #8b5cf6;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 500px;
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 40px 10px;
+}
+
+.filter {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter.active,
+.filter:hover {
+  background: #8b5cf6;
+  color: white;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 40px 60px 70px;
+}
+
+.category-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #8b5cf6;
+}
+
+.category-card p {
+  color: #666;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+}
+    </style>
+  
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Book<span>Haven</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html" class="active">Categories</a>
+      <a href="bestsellers.html">Bestsellers</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Browse Book Categories</h1>
+    <p>Find your next read by genre, mood, or topic.</p>
+    <input type="text" placeholder="Search categories..." class="search-bar" />
+  </section>
+
+  <section class="filters">
+    <button class="filter active">All</button>
+    <button class="filter" onclick="window.location.href='fiction.html'">Fiction</button>
+    <button class="filter" onclick="window.location.href='nonfiction.html'">Non-Fiction</button>
+    <button class="filter" onclick="window.location.href='romance.html'">Romance</button>
+    <button class="filter" onclick="window.location.href='mystery.html'">Mystery</button>
+    <button class="filter" onclick="window.location.href='fantasy.html'">Fantasy</button>
+    <button class="filter" onclick="window.location.href='children.html'">Children</button>
+  </section>
+
+  <section class="category-grid">
+    <div class="category-card">
+      <h3>Fiction</h3>
+      <p>Explore imaginative stories and bestselling novels.</p>
+    </div>
+
+    <div class="category-card">
+      <h3>Non-Fiction</h3>
+      <p>Learn from real stories, facts, and expert insights.</p>
+    </div>
+
+    <div class="category-card">
+      <h3>Romance</h3>
+      <p>Discover heartwarming and emotional love stories.</p>
+    </div>
+
+    <div class="category-card">
+      <h3>Mystery</h3>
+      <p>Uncover thrilling stories full of suspense and clues.</p>
+    </div>
+
+    <div class="category-card">
+      <h3>Fantasy</h3>
+      <p>Enter magical worlds filled with adventure and wonder.</p>
+    </div>
+
+    <div class="category-card">
+      <h3>Children</h3>
+      <p>Fun and educational books for young readers.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2026 BookHaven. All rights reserved.</p>
+  </footer>
+</body>
+</html>

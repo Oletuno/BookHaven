@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Sellers</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.css">
+    <script src="dist/js/bootstrap.js"></script>
+
+    <style>
+        .reading-library {
+  padding: 60px;
+  background: #f8f5f0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #8b5cf6;
+}
+
+.navbar nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.header nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.header nav a.active {
+  color: #8b5cf6;
+}
+
+.section-header p {
+  color: #666;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.book-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.book-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.book-card p {
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.read-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #8b5cf6;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.read-btn:hover {
+  background: #6d28d9;
+}
+    </style>
+  
+</head>
+<body>
+     <header class="header">
+    <div class="logo">Book<span>Haven</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html" class="active">Categories</a>
+      <a href="bestsellers.html">Bestsellers</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+   <section class="reading-library">
+  <div class="section-header">
+    <h2>Best Sellers</h2>
+    <p>Browse popular books and start reading instantly.</p>
+  </div>
+
+  <div class="book-grid">
+    <div class="book-card"><h3>My 3 pretty wives</h3><p>Genre: Fiction</p><a href="https://novelhubapp.com/reader/my-three-wives-are-beautiful-vampires-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Random Tuesday</h3><p>Genre: Mystery</p><a href="https://novelhubapp.com/reader/spoiled-by-mr-russell-q123ecwGAw5?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>A Day To Remember</h3><p>Genre: Romance</p><a href="https://novelhubapp.com/reader/super-gene-ii-evolution-yFeTayfBRA5?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>On The Verge Of Redemption</h3><p>Genre: Fantasy</p><a href="https://novelhubapp.com/reader/the-legend-of-zelda-a-link-to-the-past-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Dr. Samntha</h3><p>Genre: Science Fiction</p><a href="https://novelhubapp.com/reader/dune-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>UnTold Mysteries</h3><p>Genre: History</p><a href="https://novelhubapp.com/reader/the-golden-bough-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Ondieki</h3><p>Genre: Thriller</p><a href="https://novelhubapp.com/reader/the-girl-with-the-dragon-tattoo-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Free Jemimah</h3><p>Genre: Self Help</p><a href="https://novelhubapp.com/reader/how-to-win-friends-and-influence-people-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Screeched!</h3><p>Genre: Adventure</p><a href="https://novelhubapp.com/reader/the-adventures-of-huckleberry-finn-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>My Wife My Property</h3><p>Genre: Drama</p><a href="https://novelhubapp.com/reader/hamlet-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Mufasa</h3><p>Genre: Poetry</p><a href="https://novelhubapp.com/reader/leaves-of-grass-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Antonella</h3><p>Genre: Horror</p><a href="https://novelhubapp.com/reader/the-shining-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Long Walk To Freedom</h3><p>Genre: Biography</p><a href="https://novelhubapp.com/reader/the-biography-of-a-man-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Miss swamwester</h3><p>Genre: Children</p><a href="https://novelhubapp.com/reader/childrens-stories-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Uncovered</h3><p>Genre: Education</p><a href="https://novelhubapp.com/reader/educational-books-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>First Class</h3><p>Genre: Business</p><a href="https://novelhubapp.com/reader/business-books-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Prof. Madu</h3><p>Genre: Comedy</p><a href="https://novelhubapp.com/reader/comedy-books-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Ballerina</h3><p>Genre: Classics</p><a href="https://novelhubapp.com/reader/classic-literature-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>Redeemed</h3><p>Genre: Travel</p><a href="https://novelhubapp.com/reader/travel-books-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+    <div class="book-card"><h3>The HourGlass</h3><p>Genre: Philosophy</p><a href="https://novelhubapp.com/reader/philosophy-books-2pEpSMrUHr7?utm_source=MB_Website" class="read-btn">Read Now</a></div>
+  </div>
+</section>
+<!-- this section contains  -->
+    
+</body>
+</html>
