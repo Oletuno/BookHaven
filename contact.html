@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookHaven Contact</title>
+  <link rel="stylesheet" href="dist/css/bootstrap.css" />
+  <script src="dist/js/bootstrap.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff1eb 0%, #ace0f9 100%);
+      min-height: 100vh;
+    }
+
+    .navbar-custom {
+      background: linear-gradient(90deg, #ff512f, #dd2476);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #7f00ff, #e100ff);
+      color: white;
+      border-radius: 0 0 40px 40px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .contact-card {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 22px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: white;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .form-control, .form-select {
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .form-control:focus, .form-select:focus {
+      border-color: #e100ff;
+      box-shadow: 0 0 0 0.2rem rgba(225, 0, 255, 0.15);
+    }
+
+    .btn-send {
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      border: none;
+      border-radius: 14px;
+      padding: 12px 28px;
+      font-weight: 600;
+    }
+
+    .footer-custom {
+      background: linear-gradient(90deg, #232526, #414345);
+      color: white;
+    }
+
+    .footer-custom a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .footer-custom a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">BookHaven</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" href="bestsellers.html">Bestsellers</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section class="hero py-5 mb-5">
+  <div class="container text-center py-4">
+    <h1 class="display-5 fw-bold">Contact BookHaven</h1>
+    <p class="lead mb-0">We’d love to hear from you. Send us a message anytime.</p>
+  </div>
+</section>
+
+<div class="container mb-5">
+  <div class="row g-4 align-items-stretch">
+    <div class="col-lg-5">
+      <div class="info-box h-100">
+        <h3 class="fw-bold mb-4">Get in Touch</h3>
+        <p class="mb-4">Reach out for book inquiries, support, suggestions, or partnership opportunities.</p>
+        <p class="mb-2"><strong>Email:</strong><br>hello@bookhaven.com</p>
+        <p class="mb-2"><strong>Phone:</strong><br>+254 700 123 456</p>
+        <p class="mb-2"><strong>Location:</strong><br>Nairobi, Kenya</p>
+        <div class="mt-4 p-3 bg-white text-dark rounded-4">
+          <strong>Opening Hours</strong><br>
+          Mon - Fri: 8:00 AM - 6:00 PM<br>
+          Sat: 9:00 AM - 2:00 PM
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-7">
+      <div class="card contact-card p-4 p-md-5">
+        <h3 class="fw-bold mb-4 text-center" style="color:#7f00ff;">Send Us a Message</h3>
+        <form>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Your Email</label>
+              <input type="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control" placeholder="Message subject">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Reason for Contact</label>
+              <select class="form-select">
+                <option selected>Choose...</option>
+                <option>Book Inquiry</option>
+                <option>Customer Support</option>
+                <option>Delivery Issue</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Your Message</label>
+              <textarea class="form-control" rows="6" placeholder="Write your message here..."></textarea>
+            </div>
+            <div class="col-12 text-center mt-3">
+              <button type="submit" class="btn btn-send btn-lg text-white">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-custom pt-5 pb-4 mt-5">
+  
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5 class="fw-bold">BookHaven</h5>
+        <p>Discover stories that inspire, entertain, and transport you to new worlds.</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="bestsellers.html">Bestselleres</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="fw-bold">Contact</h5>
+        <p class="mb-1">hello@bookhaven.com</p>
+        <p class="mb-1">+254 700 123 456</p>
+        <p class="mb-0">Nairobi, Kenya</p>
+      </div>
+    </div>
+    <hr class="border-light my-4">
+    <div class="text-center">
+      <p class="mb-0">&copy; 2026 BookHaven. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
