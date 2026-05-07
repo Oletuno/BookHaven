@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="dist/css/bootstrap.css" />
   <script src="dist/js/bootstrap.js"></script>
 
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+
 <style>
     * {
   margin: 0;
@@ -295,6 +298,12 @@ body {
     }
     </style>
   </header>
+
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }
+</script>
 
   <section class="hero">
     <div class="hero-content">

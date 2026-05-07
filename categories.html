@@ -6,6 +6,8 @@
   <title>Book Categories</title>
   <link rel="stylesheet" href="dist/css/bootstrap.css">
     <script src="dist/js/bootstrap.js"></script>
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
  <style>
         * {
   margin: 0;
@@ -144,6 +146,13 @@ body {
   
 </head>
 <body>
+
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }
+</script>
+
   <header class="header">
     <div class="logo">Book<span>Haven</span></div>
     <nav>

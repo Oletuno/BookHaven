@@ -6,6 +6,8 @@
   <title>Fiction Books Gallery</title>
   <link rel="stylesheet" href="dist/css/bootstrap.css">
   <script src="dist/js/bootstrap.js"></script>
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
   
   <style>
     body {
@@ -56,6 +58,12 @@
   </style>
 </head>
 <body>
+
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/sw.js");
+  }
+</script>
 
 <section class="hero text-center">
   <div class="container">
