@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChapterVault • Premium Reads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary: 234 179 8;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .book-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalPop {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .payment-option {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option.active {
+            border-color: rgb(234 179 8);
+            box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.3);
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- Navbar -->
+    <nav class="bg-black border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-book-open text-3xl text-yellow-400"></i>
+                <h1 class="heading-font text-3xl font-bold tracking-tight">BookHaven</h1>
+            </div>
+            
+            <div class="flex items-center gap-8">
+                <a href="index.html">Home</a>
+                <a href="categories.html">Categories</a>
+                <a href="contact.html">Contact</a>
+                <a href="bestsellers.html">Bestsellers</a>
+                <a href="premium.html" class="hover:text-yellow-400 transition-colors">Premium</a>
+                <a href="#" onclick="showSection('catalog')" class="hover:text-yellow-400 transition-colors">Catalog</a>
+                <a href="#" onclick="showSection('my-library')" class="hover:text-yellow-400 transition-colors">My Library</a>
+                <div class="flex items-center gap-2 bg-zinc-900 px-4 py-2 rounded-full">
+                    <i class="fa-solid fa-coins text-yellow-400"></i>
+                   <span id="balance" class="font-semibold">$24.50</span>
+                </div>
+              <div onclick="toggleProfile()" class="w-9 h-9 bg-zinc-700 rounded-full flex items-center justify-center cursor-pointer hover:bg-yellow-400 hover:text-black transition-colors">
+                    👤
+             </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero-bg h-screen flex items-center">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="heading-font text-7xl font-bold leading-tight mb-6">
+                Premium Stories.<br>
+                <span class="text-yellow-400">One Click Away.</span>
+            </h2>
+            <p class="text-xl text-zinc-400 mb-10 max-w-lg mx-auto">
+                Unlock full access to thousands of novels. Pay once, read forever.
+            </p>
+            <button onclick="showSection('catalog')" 
+                    class="bg-yellow-400 hover:bg-yellow-300 transition-colors text-black font-semibold px-10 py-4 rounded-2xl text-lg flex items-center gap-3 mx-auto">
+                Browse Books
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalog" class="py-20 max-w-7xl mx-auto px-6 hidden">
+        <h2 class="heading-font text-5xl font-bold mb-12 text-center">Featured Novels</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8" id="books-grid">
+            <!-- Populated by JS -->
+        </div>
+    </section>
+
+    <!-- BOOK DETAIL MODAL -->
+    <div id="book-modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-[100]">
+        <div class="modal bg-zinc-900 rounded-3xl max-w-4xl w-full mx-4 overflow-hidden">
+            <div class="flex">
+                <!-- Left: Cover -->
+                <div class="w-2/5 bg-zinc-800 p-8 flex items-center justify-center" id="modal-cover">
+                    <!-- JS filled -->
+                </div>
+                
+                <!-- Right: Info -->
+                <div class="w-3/5 p-10">
+                    <button onclick="closeModal()" class="float-right text-3xl text-zinc-500 hover:text-white">×</button>
+                    
+                    <h3 id="modal-title" class="heading-font text-4xl font-bold mb-2"></h3>
+                    <p id="modal-author" class="text-yellow-400 mb-6"></p>
+                    
+                    <div class="flex gap-6 mb-8">
+                        <div>
+                            <span class="block text-xs text-zinc-500">PRICE</span>
+                            <span id="modal-price" class="text-4xl font-semibold"></span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-zinc-500">PAGES</span>
+                            <span id="modal-pages" class="text-2xl"></span>
+                        </div>
+                    </div>
+                    
+                    <p id="modal-desc" class="text-zinc-400 leading-relaxed mb-10"></p>
+                    
+                    <button onclick="proceedToPayment()" 
+                            class="w-full bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-black py-6 rounded-2xl font-bold text-xl flex items-center justify-center gap-3 transition-all">
+                        <i class="fa-solid fa-lock"></i>
+                        UNLOCK FULL BOOK - PAY NOW
+                    </button>
+                    
+                    <p class="text-center text-xs text-zinc-500 mt-6">🔒 Secure payment • Instant access • No subscription</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAYMENT MODAL -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/90 hidden flex items-center justify-center z-[200]">
+        <div class="modal bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 p-10">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-3xl font-bold">Complete Purchase</h3>
+                <button onclick="closePaymentModal()" class="text-4xl text-zinc-500 hover:text-white">×</button>
+            </div>
+            
+            <div id="payment-book-info" class="flex gap-6 mb-10 bg-zinc-800 p-6 rounded-2xl">
+                <!-- Filled by JS -->
+            </div>
+            
+            <div class="mb-8">
+                <p class="text-sm text-zinc-400 mb-4">Select Payment Method</p>
+                <div class="grid grid-cols-3 gap-4">
+                    <div onclick="selectPayment(this)" class="payment-option active border-2 border-yellow-400 bg-zinc-800 rounded-2xl p-6 text-center cursor-pointer" data-method="card">
+                        <i class="fa-solid fa-credit-card text-4xl mb-3"></i>
+                        <p class="font-medium">Card</p>
+                    </div>
+                    <div onclick="selectPayment(this)" class="payment-option border-2 border-transparent bg-zinc-800 rounded-2xl p-6 text-center cursor-pointer" data-method="paypal">
+                        <i class="fa-brands fa-paypal text-4xl mb-3"></i>
+                        <p class="font-medium">PayPal</p>
+                    </div>
+                    <div onclick="selectPayment(this)" class="payment-option border-2 border-transparent bg-zinc-800 rounded-2xl p-6 text-center cursor-pointer" data-method="crypto">
+                        <i class="fa-solid fa-coins text-4xl mb-3"></i>
+                        <p class="font-medium">Crypto</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Form -->
+            <div id="card-form">
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm mb-2">Card Number</label>
+                        <input type="text" id="card-number" 
+                               class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-400" 
+                               placeholder="4242 4242 4242 4242" maxlength="19">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm mb-2">Expiry Date</label>
+                            <input type="text" id="expiry" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-400" 
+                                   placeholder="MM/YY">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2">CVC</label>
+                            <input type="text" id="cvc" 
+                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-400" 
+                                   placeholder="123" maxlength="4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-zinc-400">Total</p>
+                    <p id="total-price" class="text-4xl font-bold"></p>
+                </div>
+                <button onclick="processPayment()" 
+                        class="bg-green-500 hover:bg-green-600 transition-colors px-12 py-5 rounded-2xl font-semibold text-lg flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    PAY SECURELY
+                </button>
+            </div>
+            
+            <p class="text-center text-[10px] text-zinc-500 mt-8">Powered by Stripe • All transactions encrypted</p>
+        </div>
+    </div>
+
+    <!-- MY LIBRARY -->
+    <section id="my-library" class="py-20 max-w-7xl mx-auto px-6 hidden">
+        <h2 class="heading-font text-5xl font-bold mb-12">My Library</h2>
+        <div id="library-grid" class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- JS populated -->
+        </div>
+    </section>
+
+    <script>
+        // Sample Books Data
+        let books = [
+            {
+                id: 1,
+                title: "The Shadow Throne",
+                author: "Elena Voss",
+                price: 9.99,
+                pages: 412,
+                cover: "https://picsum.photos/id/201/400/550",
+                desc: "In a kingdom where shadows can kill, one young woman must master the forbidden art of shadow-weaving before the darkness consumes everything she loves."
+            },
+            {
+                id: 2,
+                title: "Echoes of Eternity",
+                author: "Marcus Hale",
+                price: 12.99,
+                pages: 678,
+                cover: "https://picsum.photos/id/237/400/550",
+                desc: "When time itself begins to fracture, a disgraced chronomancer is the only one who can prevent reality from collapsing."
+            },
+            {
+                id: 3,
+                title: "The Last Lantern",
+                author: "Sofia Ramirez",
+                price: 7.49,
+                pages: 289,
+                cover: "https://picsum.photos/id/180/400/550",
+                desc: "A lone wanderer carries the final lantern in a world plunged into eternal night."
+            },
+            {
+                id: 4,
+                title: "Blood &amp; Stardust",
+                author: "Kai Lennox",
+                price: 14.99,
+                pages: 534,
+                cover: "https://picsum.photos/id/1015/400/550",
+                desc: "Space pirates, forbidden romance, and ancient alien gods collide in this explosive sci-fi epic."
+            }
+        ];
+
+        let ownedBooks = [];
+        let currentBook = null;
+
+        // Render Books
+        function renderBooks() {
+            const grid = document.getElementById('books-grid');
+            grid.innerHTML = '';
+            
+            books.forEach(book => {
+                const isOwned = ownedBooks.some(b => b.id === book.id);
+                
+                const card = document.createElement('div');
+                card.className = `book-card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer`;
+                card.innerHTML = `
+                    <div class="relative">
+                        <img src="${book.cover}" class="w-full h-80 object-cover">
+                        ${isOwned ? 
+                            `<div class="absolute top-4 right-4 bg-green-500 text-black text-xs font-bold px-3 py-1 rounded-full">OWNED</div>` : ''}
+                    </div>
+                    <div class="p-6">
+                        <h4 class="heading-font text-xl font-bold line-clamp-2">${book.title}</h4>
+                        <p class="text-yellow-400 text-sm mt-1">${book.author}</p>
+                        <div class="flex justify-between items-end mt-6">
+                            <div>
+                                <span class="text-3xl font-bold">$${book.price}</span>
+                            </div>
+                            <button onclick="event.stopImmediatePropagation(); viewBook(${book.id});" 
+                                    class="bg-zinc-800 hover:bg-yellow-400 hover:text-black px-6 py-3 rounded-2xl text-sm font-medium transition-all">
+                                ${isOwned ? 'READ NOW' : 'VIEW'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                card.onclick = () => viewBook(book.id);
+                grid.appendChild(card);
+            });
+        }
+
+        function viewBook(id) {
+            currentBook = books.find(b => b.id === id);
+            if (!currentBook) return;
+            
+            document.getElementById('modal-title').textContent = currentBook.title;
+            document.getElementById('modal-author').textContent = currentBook.author;
+            document.getElementById('modal-price').innerHTML = `$${currentBook.price} <span class="text-sm font-normal text-zinc-400">one-time</span>`;
+            document.getElementById('modal-pages').textContent = currentBook.pages;
+            document.getElementById('modal-desc').textContent = currentBook.desc;
+            
+            document.getElementById('modal-cover').innerHTML = `
+                <img src="${currentBook.cover}" class="rounded-2xl shadow-2xl max-h-[480px] object-cover">
+            `;
+            
+            document.getElementById('book-modal').classList.remove('hidden');
+            document.getElementById('book-modal').classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('book-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Payment Flow
+        function proceedToPayment() {
+            if (!currentBook) return;
+            closeModal();
+            
+            document.getElementById('payment-book-info').innerHTML = `
+                <img src="${currentBook.cover}" class="w-20 h-28 object-cover rounded-xl">
+                <div class="flex-1">
+                    <h4 class="font-bold">${currentBook.title}</h4>
+                    <p class="text-sm text-zinc-400">${currentBook.author}</p>
+                    <p class="text-3xl font-bold mt-4">$${currentBook.price}</p>
+                </div>
+            `;
+            
+            document.getElementById('total-price').textContent = `$${currentBook.price}`;
+            document.getElementById('payment-modal').classList.remove('hidden');
+            document.getElementById('payment-modal').classList.add('flex');
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function selectPayment(el) {
+            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function processPayment() {
+            // Simulate payment processing
+            const btn = event.currentTarget;
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = `
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                PROCESSING...
+            `;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                // Success!
+                ownedBooks.push(currentBook);
+                alert(`🎉 Payment successful! "${currentBook.title}" has been added to your library.`);
+                
+                closePaymentModal();
+                renderBooks();
+                renderLibrary();
+            }, 2200);
+        }
+
+        function renderLibrary() {
+            const container = document.getElementById('library-grid');
+            container.innerHTML = '';
+            
+            if (ownedBooks.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-4 text-center py-20">
+                        <i class="fa-solid fa-book text-6xl text-zinc-700 mb-6"></i>
+                        <p class="text-xl text-zinc-400">Your library is empty.</p>
+                        <button onclick="showSection('catalog')" 
+                                class="mt-6 text-yellow-400 underline">Browse books →</button>
+                    </div>
+                `;
+                return;
+            }
+            
+            ownedBooks.forEach(book => {
+                const div = document.createElement('div');
+                div.className = "bg-zinc-900 rounded-3xl overflow-hidden";
+                div.innerHTML = `
+                    <img src="${book.cover}" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h4 class="font-bold">${book.title}</h4>
+                        <p class="text-sm text-zinc-400">${book.author}</p>
+                        <button onclick="readBook(${book.id}); event.stopImmediatePropagation();" 
+                                class="mt-6 w-full bg-white text-black py-4 rounded-2xl font-medium">
+                            📖 READ NOW
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function readBook(id) {
+            const book = ownedBooks.find(b => b.id === id);
+            if (book) {
+                alert(`📖 Opening "${book.title}"...\n\n(This would open the full reader in a real app)`);
+            }
+        }
+
+        function toggleProfile() {
+            alert("Profile & Settings would appear here.\nBalance: $" + document.getElementById('balance').textContent);
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(section).classList.remove('hidden');
+            
+            if (section === 'my-library') {
+                renderLibrary();
+            }
+        }
+
+        // Initialize
+        window.onload = function() {
+            renderBooks();
+            showSection('catalog'); // Start on catalog
+            
+            // Fake balance update
+            setTimeout(() => {
+                document.getElementById('balance').textContent = '$18.75';
+            }, 4000);
+            
+            // Tailwind script already included
+            console.log('%cChapterVault frontend ready! 🚀', 'color: #eab308; font-size: 14px;');
+        };
+    </script>
+</body>
+</html>
+How to Use:
